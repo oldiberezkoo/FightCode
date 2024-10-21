@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-
+import '@/stylesheet/reset.global.scss'
 import "@/stylesheet/app.global.scss"
 
 export const metadata: Metadata = {
