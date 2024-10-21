@@ -1,0 +1,8 @@
+@layer utilities {
+	.animate {
+		@apply transition-all duration-300 ease-in-out;
+	}
+	.animate__group {
+		@apply group group-hover:animate__animated;
+	}
+}

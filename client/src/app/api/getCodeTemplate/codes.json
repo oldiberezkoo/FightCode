@@ -1,0 +1,20 @@
+{
+	"codes": [
+		{
+			"language": "typescript, javascript",
+			"code": "window.toggleFavorite = (alias: string): boolean => {\n    try {\n        const storedFavorites = localStorage.getItem('favorites');\n        const favorites: string[] = storedFavorites ? JSON.parse(storedFavorites) : [];\n\n        const isFavorite = favorites.includes(alias);\n\n        const updatedFavorites = isFavorite\n            ? favorites.filter((favorite) => favorite !== alias)\n            : [...favorites, alias];\n\n        localStorage.setItem('favorites', JSON.stringify(Array.from(new Set(updatedFavorites))));\n\n    } catch (error) {\n        console.error('Could not save favorite:', error);\n    }\n\n    renderSelectList();\n    return false;\n};"
+		},
+		{
+			"language": "python",
+			"code": "def toggle_favorite(alias: str) -> bool:\n    try:\n        stored_favorites = local_storage.get('favorites', '[]')\n        favorites = json.loads(stored_favorites)\n\n        if alias in favorites:\n            updated_favorites = [fav for fav in favorites if fav != alias]\n        else:\n            updated_favorites = favorites + [alias]\n\n        local_storage.set('favorites', json.dumps(list(set(updated_favorites))))\n\n    except Exception as error:\n        print(f'Could not save favorite: {error}')\n\n    render_select_list()\n    return False"
+		},
+		{
+			"language": "java",
+			"code": "public static boolean toggleFavorite(String alias) {\n    try {\n        String storedFavoritesJson = LocalStorage.getItem(\"favorites\");\n        List<String> favorites = (storedFavoritesJson != null) ? JsonUtil.fromJson(storedFavoritesJson) : new ArrayList<>();\n\n        boolean isFavorite = favorites.contains(alias);\n\n        List<String> updatedFavorites;\n        if (isFavorite) {\n            updatedFavorites = new ArrayList<>(favorites);\n            updatedFavorites.remove(alias);\n        } else {\n            updatedFavorites = new ArrayList<>(favorites);\n            updatedFavorites.add(alias);\n        }\n\n        Set<String> uniqueFavorites = new HashSet<>(updatedFavorites);\n        LocalStorage.setItem(\"favorites\", JsonUtil.toJson(uniqueFavorites));\n\n    } catch (Exception error) {\n        System.out.println(\"Could not save favorite: \" + error);\n    }\n\n    renderSelectList();\n    return false;\n}"
+		},
+		{
+			"language": "csharp",
+			"code": "public bool ToggleFavorite(string alias) {\n    try {\n        var storedFavoritesJson = LocalStorage.GetItem(\"favorites\");\n        var favorites = storedFavoritesJson != null ? JsonConvert.DeserializeObject<List<string>>(storedFavoritesJson) : new List<string>();\n\n        bool isFavorite = favorites.Contains(alias);\n\n        List<string> updatedFavorites;\n        if (isFavorite) {\n            updatedFavorites = favorites.Where(fav => fav != alias).ToList();\n        } else {\n            updatedFavorites = new List<string>(favorites) { alias };\n        }\n\n        LocalStorage.SetItem(\"favorites\", JsonConvert.SerializeObject(updatedFavorites.Distinct().ToList()));\n\n    } catch (Exception ex) {\n        Console.WriteLine(\"Could not save favorite: \" + ex.Message);\n    }\n\n    RenderSelectList();\n    return false;\n}"
+		}
+	]
+}
