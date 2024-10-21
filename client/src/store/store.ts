@@ -12,4 +12,3 @@ const initialState = create<Store>(set => ({
 	decrement: () => set(state => ({ count: state.count - 1 })),
 }))
 export default initialState
-
