@@ -1,0 +1,6 @@
+model Font {
+	id Int @default(autoincrement()) @id
+	previewText String 
+	fontFile String
+	
+}

@@ -1,6 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority"
 
-const buttonStyles = cva(" w-full h-4", {
+const buttonStyles = cva("w-full h-4", {
 	variants: {
 		intent: {
 			default: " bg-buttonBackground text-titleColor",
